@@ -1,0 +1,46 @@
+@use '../utilities' as u;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    /*1 rem = 10px*/
+    @media screen and (max-width: u.$tablet-size) {
+        font-size: 52.5%;
+    }
+    
+    @media screen and (max-width: u.$mobile-size) {
+        font-size: 42.5%;
+    }
+
+    overflow-x: hidden; //quick fix, cant find any elements that pushes on the x axis
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    overflow: hidden;
+
+    //might get removed later on
+    background-color: u.$secondary-background-color;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+button:hover{
+    cursor: pointer;
+}

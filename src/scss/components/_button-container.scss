@@ -1,0 +1,24 @@
+@use '../utilities' as u;
+
+.button-container,
+.button-container-challenges {
+    @include u.flex(row, center, center);
+    width: 50%;
+    gap: 1rem;
+    
+    transform: translateY(-3.3rem);
+
+     @media screen and(max-width: u.$tablet-size) {
+        flex-direction: column-reverse; 
+     }
+}
+
+.button-container-challenges {
+   transform: translateY(0rem);
+   margin: auto;
+   min-height: 25vh;
+
+  @media screen and(min-width: u.$tablet-size) {
+    height: 15vh;
+   }
+}

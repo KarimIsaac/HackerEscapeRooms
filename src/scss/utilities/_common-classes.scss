@@ -1,0 +1,8 @@
+@use '../utilities/colors' as c;
+
+.meny-hover-link{
+    //make the a tag inside an li change color
+    li:hover a{
+        color: c.$secondary-btn-color;
+    }
+}

@@ -1,0 +1,199 @@
+@use "../../utilities/" as u;
+$border-color: rgb(184, 184, 184);
+
+#filter-section {
+    @include u.section(100vw, 20vh, column, center, center);
+    margin: 3rem 0;
+
+    gap: 3rem;
+
+    h2 {
+        font-size: u.$medium-header-font;
+        font-weight: 400;
+    }
+    button#open-filter-btn {
+        width: 16rem;
+        height: 4rem;
+        font-size: u.$small-font;
+    }
+    
+}
+
+.filter-container {
+    @include u.content-max-width;
+    max-width: 1240px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 10rem 15rem 15rem;
+
+    border: 3px solid $border-color;
+    border-radius: 0.5rem;
+    gap: 0rem 1rem;
+    padding: 1rem;
+    
+    -webkit-animation: pop-in 0.3s;
+    -moz-animation: pop-in 0.3s;
+    -ms-animation: pop-in 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+
+    @media screen and (max-width: u.$tablet-size) {
+        @include u.flex(column, space-evenly, center);
+        max-width: calc(100% - 50px);
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+    }
+    .grid-header {
+        grid-row: 1/1;
+        grid-column: 1/13;
+
+        @include u.flex(row, space-between, flex-start);
+
+        h3 {
+            margin-top: 1rem;
+            font-size: u.$medium-font;
+            font-weight: 400;
+        }
+
+        button#close-filter-btn {
+            @include u.flex(row, center, center);
+            background: none;
+            border: none;
+            width: 5rem;
+            height: 5rem;
+
+            .fas {
+                font-size: u.$big-font;
+            }
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .grid-item {
+        @include u.flex(column, space-between, flex-start);
+        padding: 1rem;
+        h3 {
+            font-size: u.$normal-font;
+            margin-bottom: 2rem;
+        }
+        div {
+            @include u.flex(column, flex-start, flex-start);
+            gap: 1rem;
+        }
+    }
+
+    .grid-child-one {
+        // background-color: blue;
+        grid-column: 1/5;
+    }
+    .grid-child-two {
+        // background-color: green;
+        grid-column: 5/9;
+
+        div {
+            @include u.flex(row, flex-start, flex-start);
+            gap: 1rem;
+            flex-wrap: wrap;
+
+            ul.rating-stars {
+                gap: 0.5rem;
+                li {
+                    font-size: u.$medium-font;
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.2);
+                    }
+                }
+            }
+
+            p {
+                @include u.flex(row, center, center);
+                width: 3rem;
+                height: 4rem;
+                font-size: u.$normal-font;
+            }
+        }
+    }
+    .grid-child-three {
+        // background-color: pink;
+        grid-column: 9/13;
+        grid-row: 2/3;
+        div {
+            @include u.flex(row, flex-start, flex-start);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            button {
+                background-color: u.$primary-background-color;
+                padding: 0.5rem 1.5rem;
+                border: 2.5px solid $border-color;
+                border-radius: 2rem;
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .grid-child-four {
+        // background-color: orange;
+        grid-column: 5/9;
+        grid-row: 3/4;
+
+        #filter-search-input {
+            width: 100%;
+            height: 5rem;
+            border: 3px solid $border-color;
+            border-radius: 0.5rem;
+            padding: 1rem;
+
+            font-size: u.$normal-font;
+        }
+    }
+}
+
+.no-matches-container {
+    display: flex;
+    justify-content: center;
+
+    .no-matches-text {
+        font-size: 4.5rem;
+        transform: translateY(150px);
+    }
+}
+
+/* ======= .filter-container @KEYFRAMES ======= */
+@-webkit-keyframes pop-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+@-moz-keyframes pop-in {
+    0% {
+        opacity: 0;
+        -moz-transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: scale(1);
+    }
+}
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

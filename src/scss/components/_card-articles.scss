@@ -1,0 +1,121 @@
+@use "../utilities" as u;
+//section layout
+section#card-section {
+    @include u.section(100vw, inherit, row, center, center);
+    padding: 15px;
+    gap: 3rem;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    //hides scrollbar but keeps functionality
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media screen and(max-width: u.$tablet-size) {
+        justify-content: flex-start;
+    }
+}
+
+// ===== card component container ==================================
+article.card {
+    @include u.section(36rem, 44.6rem, column, flex-start, space-evenly);
+    min-width: 36rem;
+    border-radius: 8px;
+
+    box-shadow: 0px 0px 15px rgb(146, 146, 146);
+    overflow: hidden;
+    &:hover{
+        box-shadow: 0px 0px 21px rgb(146, 146, 146);
+    }
+}
+
+// ========= img container =========================
+
+picture.card-top-part {
+    position: relative;
+    height: 50%;
+
+    //icon holder for showing of on desktop or in IRL
+    span.fa {
+        color: u.$card-icon-color;
+        @include u.flex(row, center, center);
+        height: 2.5rem;
+        width: 2.5rem;
+
+        position: absolute;
+        right: 5%;
+        top: 10%;
+        font-size: 1.8rem;
+    }
+}
+
+// ========= text container ===================
+
+div.card-bottom-part {
+    height: 50%;
+    padding: 0 15px 10px 15px;
+
+    .card-text-container {
+        height: 70%;
+
+        h2 {
+            font-weight: 400;
+            font-size: u.$big-font;
+        }
+
+        div.card-subheader-container {
+            @include u.flex(row, space-between, center);
+            margin: auto;
+
+            small {
+                font-size: u.$small-font;
+            }
+        }
+
+        p {
+            line-height: 1.5rem;
+            margin-top: 5%;
+
+            line-height: 2rem;
+            font-size: u.$normal-font;
+        }
+    }
+
+    div.card-btn-container {
+        @include u.flex(row, flex-end, center);
+        height: 30%;
+        margin-top: 0.6rem;
+
+        //over-writes primary-btn class at _buttons.scss
+        button {
+            height: 4.4rem;
+            width: 18rem;
+            font-size: u.$normal-font;
+
+            @media screen and (max-width: u.$tablet-size) {
+                height: 4rem;
+            }
+        }
+    }
+}
+
+/* ========== star rating system on card articles ===== */
+
+ul.rating-stars {
+    @include u.flex(row, flex-start, center);
+    list-style: none;
+    gap: 1rem;
+
+    li {
+        @include u.flex(row, center, center);
+        color: u.$rating-color;
+        font-size: u.$small-font;
+        -webkit-text-stroke: 1px u.$checked-rating-color;
+    }
+
+    li.checked {
+        color: u.$checked-rating-color;
+    }
+}

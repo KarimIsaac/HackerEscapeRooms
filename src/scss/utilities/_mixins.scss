@@ -1,0 +1,65 @@
+@use "./colors" as c;
+@use "./fonts" as f;
+
+@mixin content-max-width {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+@mixin content-max-width-ultra-wide {
+    width: 94%;
+    max-width: 1800px;
+    margin: auto;
+}
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin section($width, $height, $direction, $justify, $align) {
+    @include flex($direction, $justify, $align);
+    width: 100%;
+    max-width: $width;
+    height: $height;
+}
+
+/* ============== mixins btns =================== */
+
+@mixin standard-btn-styles {
+    @include flex(row, center, center);
+    background-color: c.$primary-btn-color;
+    height: 6.6rem;
+    width: 30rem;
+
+    padding: 0 2rem;
+    gap: 1rem;
+
+    border: none;
+    border-radius: 5px;
+
+    color: c.$primary-btn-text-color;
+    font-size: f.$medium-font;
+    font-weight: bold;
+
+    span.btn-icon {
+        background-color: c.$secondary-btn-color; //will be removed when logo is added
+        display: inline-block;
+        color: c.$secondary-btn-color; //if font-awesome is used
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+@mixin meny-btn {
+    background-color: c.$secondary-background-color;
+    border: none;
+    color: c.$secondary-text-color;
+
+    .fas {
+        font-size: f.$large-header-font;
+    }
+}

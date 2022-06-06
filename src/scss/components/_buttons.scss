@@ -1,0 +1,65 @@
+@use '../utilities' as u;
+
+//primary btn: red background, changes to no background and underline in mobile
+//secondary btn: light blue background, no changes in mobile
+//third btn: no background, light blue text and border, no changes in mobiler
+
+//fourth btn: === primary-btn but no changes in mobile mode (standard-btn)
+// OBS! btns in article cards uses fourth btn and gets small changes in components/_card-articles.scss
+
+
+.primary-btn{
+    @include u.standard-btn-styles;
+    &:hover{
+        transform: scale(1.015);
+        box-shadow: 0px 0px 5px #929292;        
+    }
+    @media screen and (max-width: u.$tablet-size) {
+        background: none;
+        
+        color: u.$secondary-btn-color;
+        text-decoration: underline;
+
+        span.btn-icon{
+            background-color: u.$primary-btn-color;
+            color: u.$primary-btn-text-color;//if font-awesome is used
+        }
+    }
+}
+
+.secondary-btn{
+    @include u.standard-btn-styles;
+    color: u.$secondary-btn-text-color;
+    background-color: u.$secondary-btn-color;
+    &:hover{
+        transform: scale(1.015);
+        box-shadow: 0px 0px 5px #929292;        
+    }
+} 
+
+.third-btn{
+    @include u.standard-btn-styles;
+
+    background: none;
+    color: u.$secondary-btn-color;
+    
+    border: 1px solid u.$secondary-btn-color;
+
+    span.btn-icon{
+        background-color: u.$secondary-btn-color;
+        color: u.$primary-btn-text-color; //if font-awesome is used
+    }
+    &:hover{
+        transform: scale(1.015);
+        box-shadow: 0px 0px 5px #929292;        
+    }
+}
+
+
+.fourth-btn{
+    @include u.standard-btn-styles;
+    &:hover{
+        transform: scale(1.015);
+        box-shadow: 0px 0px 5px #929292;        
+    }
+}

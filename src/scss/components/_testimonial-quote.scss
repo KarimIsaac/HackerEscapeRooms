@@ -1,0 +1,51 @@
+@use '../utilities' as u;
+
+#testimonial-container {
+    @include u.section(100%, 35vh, row, center, center);
+    @include u.content-max-width; //needs to be below u.section
+    gap: 5rem;
+
+    @media screen and (max-width: u.$tablet-size) {
+        //selects all element with and after second child quote
+        & .testimonial-quote:nth-child(n+2){
+            display: none;
+        }
+    }
+}
+
+.testimonial-quote {
+    @include u.flex(row, center, flex-start);
+    width: 40%;
+    gap: 1.5rem;
+
+    picture {
+        background-color:u.$secondary-background-color;
+        min-width: 8rem;  // selected rem here to make shrink when the font shrinks
+        height: 8rem; // selected rem here to make shrink when the font shrinks
+        
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    p {
+        font-size: u.$medium-font;
+        font-style: italic;
+
+        margin-bottom: 8px;
+    }
+
+    i {
+        font-size: u.$normal-font;
+
+        span.qoute-year{
+            display: block;
+            @media screen and (max-width: u.$tablet-size) {
+                display: inline;
+            }
+        }
+    }
+
+    @media screen and (max-width: u.$tablet-size) {
+        width: 80%;   
+    }
+}

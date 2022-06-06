@@ -1,0 +1,24 @@
+@use "../../utilities/" as u;
+
+section#card-section {
+  @include u.content-max-width;
+  @include u.flex(row, space-evenly, flex-start);
+  flex-wrap: wrap;
+  min-height: 20vh;
+  margin: 10rem auto;
+  padding: 0;
+
+  .card {
+    margin: 3rem 0;
+  }
+
+  @media screen and (max-width: u.$mobile-size) {
+    @include u.flex(column, flex-start, center);
+  }
+
+  @media screen and (min-width: u.$desktop-size) {
+    @include u.content-max-width-ultra-wide;
+    margin: 10rem auto;
+    padding: 0;
+  }
+}
