@@ -36,4 +36,6 @@ function disableFilters() {
         const filterBtn = document.getElementById('open-filter-btn');
         filterBtn.style.display = "";
     })
+
+    
 }

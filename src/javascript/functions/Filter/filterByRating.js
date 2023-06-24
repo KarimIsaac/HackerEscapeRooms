@@ -73,32 +73,32 @@ function getRatingFromCard(card) {
 }
 
 
-export function displayCardsByRating() {
+export function displayCardsByRating() { 
     document.querySelectorAll('.card').forEach(card => {
         let checkOrderOfInput = RatingStorage.lessThanValue < RatingStorage.biggerThanValue ?
             getRatingFromCard(card) < RatingStorage.lessThanValue || getRatingFromCard(card) > RatingStorage.biggerThanValue :
             getRatingFromCard(card) > RatingStorage.lessThanValue || getRatingFromCard(card) < RatingStorage.biggerThanValue;
-        var alert1=false
+
         if (checkOrderOfInput) {
-            if (card.style.display == "none") return;
+            if (card.style.display === "none") return;
             card.style.display = "none";
 
-            if(RatingStorage.biggerThanValue < RatingStorage.lessThanValue){
+            if (RatingStorage.biggerThanValue < RatingStorage.lessThanValue) {
+                alert("Max rating must be less than min rating");
+                resetRatingFilter();
+            }
+        }
+    });
+}
 
-                alert("Max rating must be less than min rating ")
-                    
-             }
-             else{
-                return rating
+function resetRatingFilter() {
+    // Reset the filter by setting the min and max rating values to their defaults
+    RatingStorage.lessThanValue = 0;
+    RatingStorage.biggerThanValue = 5;
 
-             }    
-             
-        };
-        
-        
-        
-    })
-
-   
-} 
+    // Display all the cards again
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.display = "block";
+    });
+}
 
